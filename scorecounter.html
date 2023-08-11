@@ -8,8 +8,21 @@
                 color: lawngreen;
             }
         </style>
+        <script>
+            const player = [];
+
+            function ap() {
+                player.push(document.getElementById('namebox').innerText);
+                window.alert(player.toLocaleString());
+            }
+        </script>
     </head>
     <body>
         <h1>Welcome to the score counter</h1>
+        <h2>Please input the name of the players that will be playing.</h2>
+        <input id="namebox" type="text">
+        <br>
+        <button type="button" onclick="ap">Next player</button>
+        <button type="button">Thats it</button>
     </body>
 </html>
