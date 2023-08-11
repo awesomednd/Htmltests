@@ -22,12 +22,37 @@
             }
         </style>
         <script>
+            let pn = 0;
             const player = [];
 
+            function rp(arr, num) {
+                const shuffled = [...arr].sort(() => 0.5 - Math.random());
+
+                return shuffled.slice(0, num);
+            }
+
+            function rpa() {
+                if (pn == 0 || pn == 1) {
+                    window.alert("Get some friends")
+                    document.getElementById('namebox').style.display = "block";
+                    document.getElementById('apbut').style.display = "block";
+                    document.getElementById('tibut').style.display = "block";
+                } else if (pn == 2) {
+
+                }
+            }
+
             function ap() {
-                player.push(document.getElementById('namebox').value);
+                pn = player.push(document.getElementById('namebox').value);
                 window.alert(player.toLocaleString());
-                document.getElementById('namebox').innerHTML = "";
+                window.alert(pn);
+                document.getElementById('namebox').innerText = "";
+            }
+
+            function ti() {
+                document.getElementById('namebox').style.display = "none";
+                document.getElementById('apbut').style.display = "none";
+                document.getElementById('tibut').style.display = "none";
             }
         </script>
     </head>
@@ -36,7 +61,7 @@
         <h2>Please input the name of the players that will be playing.</h2>
         <input id="namebox" type="text">
         <br>
-        <button type="button" onclick="ap()">Next player</button>
-        <button type="button">Thats it</button>
+        <button type="button" id="apbut" onclick="ap()">Next player</button>
+        <button type="button" id="tibut" onclick="ti()">Thats it</button>
     </body>
 </html>
