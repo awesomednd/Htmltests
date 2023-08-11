@@ -7,6 +7,19 @@
                 background-color: #1f1f1f;
                 color: lawngreen;
             }
+
+            button {
+                background-color: #3f3f3f;
+                color: lawngreen;
+                border-color: #5f5f5f;
+            }
+
+            input {
+                background-color: #3f3f3f;
+                color: lawngreen;
+                border-color: #5f5f5f;
+
+            }
         </style>
         <script>
             const player = [];
@@ -14,6 +27,7 @@
             function ap() {
                 player.push(document.getElementById('namebox').innerText);
                 window.alert(player.toLocaleString());
+                document.getElementById('namebox').innerHTML = "";
             }
         </script>
     </head>
@@ -22,7 +36,7 @@
         <h2>Please input the name of the players that will be playing.</h2>
         <input id="namebox" type="text">
         <br>
-        <button type="button" onclick="ap">Next player</button>
+        <button type="button" onclick="ap()">Next player</button>
         <button type="button">Thats it</button>
     </body>
 </html>
