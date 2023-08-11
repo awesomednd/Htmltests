@@ -25,7 +25,7 @@
             const player = [];
 
             function ap() {
-                player.push(document.getElementById('namebox').innerText);
+                player.push(document.getElementById('namebox').value);
                 window.alert(player.toLocaleString());
                 document.getElementById('namebox').innerHTML = "";
             }
