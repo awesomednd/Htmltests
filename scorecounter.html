@@ -18,16 +18,45 @@
                 background-color: #3f3f3f;
                 color: lawngreen;
                 border-color: #5f5f5f;
+            }
 
+            .hidinit {
+                display: none;
             }
         </style>
         <script>
             let pn = 0;
             const player = [];
+            let t1si = 0;
+            let t2si = 0;
+
+            function wc() {
+                if (t1si == 10) {
+                    t1si = 0;
+                    t2si = 0;
+                    window.alert("TEAM ONE HAS WON! \n click hand the teams will be rechosen");
+                    rpa();
+                } else if (t2si == 10) {
+                    t1si = 0;
+                    t2si = 0;
+                    window.alert("TEAM TWO HAS WON! \n click hand the teams will be rechosen");
+                    rpa();
+                }
+            }
+
+            function uds() {
+                let var2 = "Team1 Score: " + t1si + " Team2 Score: " + t2si;
+                document.getElementById('scores').innerHTML = var2;
+            }
+
+            function stg() {
+                document.getElementById('t1s').style.display = "block";
+                document.getElementById('t2s').style.display = "block";
+                document.getElementById('scores').style.display = "block";
+            }
 
             function rp(arr, num) {
                 const shuffled = [...arr].sort(() => 0.5 - Math.random());
-
                 return shuffled.slice(0, num);
             }
 
@@ -37,15 +66,37 @@
                     document.getElementById('namebox').style.display = "block";
                     document.getElementById('apbut').style.display = "block";
                     document.getElementById('tibut').style.display = "block";
-                } else if (pn == 2) {
-
+                } else if (pn == 3) {
+                    let arr = player;
+                    let var1 = rp(player, pn)
+                    //window.alert(var1)
+                    console.log(var1);
+                    let t1 = var1[0] + ", " + var1[1];
+                    let t2 = var1[2];
+                    console.log(t1 + t2);
+                    let tm = "Team1 is: " + t1 + " Team2 is: " + t2;
+                    document.getElementById('team1').style.display = "block";
+                    document.getElementById('team1').innerHTML = tm;
+                    stg()
+                } else {
+                    let arr = player;
+                    let var1 = rp(player, 4)
+                    //window.alert(var1)
+                    console.log(var1)
+                    let t1 = var1[0] + ", " + var1[1];
+                    let t2 = var1[2] + ", " + var1[3];
+                    console.log(t1 + t2);
+                    let tm = " Team1 is: " + t1 + " Team2 is: " + t2;
+                    document.getElementById('team1').style.display = "block";
+                    document.getElementById('team1').innerHTML = tm;
+                    stg()
                 }
             }
 
             function ap() {
                 pn = player.push(document.getElementById('namebox').value);
-                window.alert(player.toLocaleString());
-                window.alert(pn);
+                //window.alert(player.toLocaleString());
+                //window.alert(pn);
                 document.getElementById('namebox').innerText = "";
             }
 
@@ -53,6 +104,19 @@
                 document.getElementById('namebox').style.display = "none";
                 document.getElementById('apbut').style.display = "none";
                 document.getElementById('tibut').style.display = "none";
+                rpa()
+            }
+
+            function t1sy() {
+                t1si += 1;
+                wc();
+                uds();
+            }
+
+            function t2sy() {
+                t2si += 1;
+                wc();
+                uds();
             }
         </script>
     </head>
@@ -63,5 +127,10 @@
         <br>
         <button type="button" id="apbut" onclick="ap()">Next player</button>
         <button type="button" id="tibut" onclick="ti()">Thats it</button>
+        <br>
+        <p calss="hidinit" id="team1"></p>
+        <p class="hidinit" id="scores">Team1 Score: 0 Team2 Score: 0</p>
+        <button class="hidinit" id="t1s" onclick="t1sy()">Team One Scores</button>
+        <button class="hidinit" id="t2s" onclick="t2sy()">Team Two Scores</button>
     </body>
 </html>
